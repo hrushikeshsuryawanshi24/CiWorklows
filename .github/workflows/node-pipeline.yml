@@ -1,0 +1,21 @@
+name: "Node.js CI Pipeline"
+
+on:
+  push:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print Hello World
+        uses: actions/checkout@v5
+       
+      - name: Setup Node Js Environment
+        uses: actions/setup-node@v6
+       
+      - name: Install Dependencies
+        run: npm install
+        
+      - name: Run Tests
+        run: npm test  
+         

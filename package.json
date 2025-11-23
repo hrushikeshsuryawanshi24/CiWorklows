@@ -1,0 +1,23 @@
+{
+  "name": "workflow",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hrushikeshsuryawanshi24/CiWorklows.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hrushikeshsuryawanshi24/CiWorklows/issues"
+  },
+  "homepage": "https://github.com/hrushikeshsuryawanshi24/CiWorklows#readme",
+  "dependencies": {
+    "jest": "^30.2.0"
+  }
+}
