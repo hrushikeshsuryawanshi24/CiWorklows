@@ -1,0 +1,43 @@
+name: Send Mail
+
+on:
+  workflow_dispatch:     # manual run from Actions UI
+  push:
+    branches:   # remove or change as needed
+      - main
+      - master
+
+jobs:
+  send_email:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Send mail
+        uses: dawidd6/action-send-mail@v6
+        with:
+          # Use server settings instead of connection_url (clear & explicit)
+          server_address: smtp.gmail.com
+          server_port: 465
+          secure: true
+          username: ${{ secrets.MAIL_USERNAME }}
+          password: ${{ secrets.MAIL_PASSWORD }}
+
+          subject: GitHub Actions — Job result for ${{ github.repository }}
+          to: hrushikeshss24@gmail.com
+          from: Hrushikesh Suryawanshi <${{ secrets.MAIL_USERNAME }}>
+
+          # body can use context variables
+          body: |
+            Hello,
+            
+            The workflow `${{ github.workflow }}` run #${{ github.run_number }} for `${{ github.repository }}` finished.
+            Check the Actions tab for details: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+
+          # Optional: attach files from the repo
+          # attachments: attachments/release-notes.txt
+
+          # Optional: set content_type for HTML body, or use html_body
+          # html_body: file://README.html
